@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mural de Estágios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4ee;--surface:#fff;--ink:#12261f;--muted:#5b6b64;--line:#d5dbd2;--brand:#0f4c45;--brand-ink:#fff;--mark:#ffd23f;--err:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a16;--surface:#16261f;--ink:#eaf1ec;--muted:#9bb0a6;--line:#2a3f36;--brand:#7fd1b9;--brand-ink:#0e1a16;--err:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0e1a16;--surface:#16261f;--ink:#eaf1ec;--muted:#9bb0a6;--line:#2a3f36;--brand:#7fd1b9;--brand-ink:#0e1a16;--err:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+header.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);line-height:1;letter-spacing:-.03em;font-weight:800;margin:0 0 18px;max-width:14ch}
+.hero h1 span{background:linear-gradient(transparent 62%,var(--mark) 62% 92%,transparent 92%);color:inherit}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:52ch;margin:0 0 26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:600;border:2px solid var(--brand);background:var(--brand);color:var(--brand-ink);padding:12px 22px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn:active{transform:translateY(1px)}
+section{padding:44px 0}
+h2{font-size:1.8rem;letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 24px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px 12px}
+textarea{min-height:86px;resize:vertical}
+input:invalid:not(:placeholder-shown){border-color:var(--err)}
+.msg{margin:0;font-weight:600;min-height:1.4em}
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.tools input{flex:1 1 220px}.tools select{flex:0 1 190px}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.88rem;color:var(--muted);font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td strong{display:block;font-size:1.02rem}
+td .co{color:var(--muted);font-size:.92rem}
+td .desc{color:var(--muted);font-size:.86rem;margin-top:4px;max-width:44ch}
+.tag{display:inline-block;padding:2px 10px;border-radius:99px;border:1.5px solid var(--brand);font-size:.82rem;font-weight:600;color:var(--brand)}
+.tag.r{background:var(--mark);border-color:var(--mark);color:#12261f}
+.act{display:flex;gap:8px;flex-direction:column;align-items:flex-start}
+.apply{font-weight:600;color:var(--brand)}
+.del{background:none;border:0;font:inherit;font-size:.84rem;color:var(--muted);cursor:pointer;padding:0;text-decoration:underline}
+.empty{text-align:center;color:var(--muted);padding:34px 16px}
+footer{padding:30px 0 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media(max-width:640px){form{grid-template-columns:1fr;padding:18px}.hero{padding-top:36px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>Seu próximo estágio está <span>aqui</span>.</h1>
+  <p>Empresas publicam vagas de estágio em um minuto. Estudantes encontram, filtram e se candidatam direto no contato de cada vaga.</p>
+  <div class="btns"><a class="btn" href="#publicar">Publicar uma vaga</a><a class="btn ghost" href="#vagas">Ver vagas abertas</a></div>
+</div></header>
+
+<main class="wrap">
+<section id="publicar">
+  <h2>Publicar vaga de estágio</h2>
+  <p class="sub">Preencha os dados e a vaga aparece na tabela logo abaixo.</p>
+  <form id="f" novalidate>
+    <div><label for="empresa">Empresa</label><input id="empresa" required maxlength="60" placeholder="Ex.: Studio Cariri"></div>
+    <div><label for="cargo">Título da vaga</label><input id="cargo" required maxlength="70" placeholder="Ex.: Estágio em Desenvolvimento Web"></div>
+    <div><label for="area">Área</label><input id="area" required maxlength="40" placeholder="Ex.: Tecnologia"></div>
+    <div><label for="mod">Modalidade</label><select id="mod"><option>Presencial</option><option>Híbrido</option><option>Remoto</option></select></div>
+    <div><label for="cidade">Cidade / UF</label><input id="cidade" required maxlength="40" placeholder="Ex.: Juazeiro do Norte / CE"></div>
+    <div><label for="bolsa">Bolsa mensal <small>(opcional)</small></label><input id="bolsa" maxlength="30" placeholder="Ex.: R$ 1.200"></div>
+    <div class="full"><label for="contato">Contato para candidatura <small>(e-mail ou link)</small></label><input id="contato" required maxlength="120" placeholder="rh@empresa.com.br ou https://empresa.com/vagas"></div>
+    <div class="full"><label for="desc">Descrição curta <small>(opcional)</small></label><textarea id="desc" maxlength="220" placeholder="Atividades, requisitos e carga horária."></textarea></div>
+    <div class="full btns"><button class="btn" type="submit">Publicar vaga</button><p class="msg" id="msg" role="status"></p></div>
+  </form>
+</section>
+
+<section id="vagas">
+  <h2>Vagas abertas <span id="count" class="tag"></span></h2>
+  <p class="sub">As mais recentes aparecem primeiro.</p>
+  <div class="tools">
+    <input id="q" type="search" placeholder="Buscar por cargo, empresa, área ou cidade" aria-label="Buscar vagas">
+    <select id="fm" aria-label="Filtrar por modalidade"><option value="">Todas as modalidades</option><option>Presencial</option><option>Híbrido</option><option>Remoto</option></select>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Vaga</th><th>Área</th><th>Modalidade</th><th>Local</th><th>Bolsa</th><th>Publicada</th><th>Ação</th></tr></thead>
+    <tbody id="tb"></tbody>
+  </table></div>
+</section>
+</main>
+
+<footer><div class="wrap">As vagas ficam salvas neste navegador. Confirme os dados da empresa antes de enviar documentos pessoais.</div></footer>
+
+<script>
+(function(){
+var KEY="vagas-estagio-v1";
+var $=function(id){return document.getElementById(id)};
+var seed=[
+ {id:3,empresa:"Studio Cariri",cargo:"Estágio em Desenvolvimento Web",area:"Tecnologia",mod:"Híbrido",cidade:"Juazeiro do Norte / CE",bolsa:"R$ 1.300",contato:"rh@studiocariri.com.br",desc:"HTML, CSS e JavaScript. 6h por dia.",data:Date.now()-86400000*1},
+ {id:2,empresa:"Clínica Vida Plena",cargo:"Estágio em Administração",area:"Administrativo",mod:"Presencial",cidade:"Crato / CE",bolsa:"R$ 900",contato:"https://clinicavidaplena.com.br/trabalhe-conosco",desc:"Apoio ao financeiro e atendimento.",data:Date.now()-86400000*3},
+ {id:1,empresa:"Agência Sertão Digital",cargo:"Estágio em Marketing",area:"Comunicação",mod:"Remoto",cidade:"Fortaleza / CE",bolsa:"",contato:"vagas@sertaodigital.com",desc:"",data:Date.now()-86400000*5}
+];
+var vagas=load();
+function load(){try{var r=localStorage.getItem(KEY);if(r){var p=JSON.parse(r);if(Array.isArray(p))return p}}catch(e){}return seed.slice()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(vagas))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function link(c){c=c.trim();if(/^https?:\/\//i.test(c))return c;if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c))return"mailto:"+c;return null}
+function ago(t){var d=Math.floor((Date.now()-t)/86400000);return d<=0?"Hoje":d===1?"Ontem":"Há "+d+" dias"}
+function render(){
+  var q=$("q").value.toLowerCase().trim(),m=$("fm").value;
+  var l=vagas.filter(function(v){
+    return (!m||v.mod===m)&&(!q||[v.cargo,v.empresa,v.area,v.cidade].join(" ").toLowerCase().indexOf(q)>-1)
+  }).sort(function(a,b){return b.data-a.data});
+  $("count").textContent=l.length+(l.length===1?" vaga":" vagas");
+  $("tb").innerHTML=l.length?l.map(function(v){
+    var h=link(v.contato);
+    return '<tr><td><strong>'+esc(v.cargo)+'</strong><span class="co">'+esc(v.empresa)+'</span>'+(v.desc?'<div class="desc">'+esc(v.desc)+'</div>':'')+'</td>'+
+    '<td>'+esc(v.area)+'</td>'+
+    '<td><span class="tag'+(v.mod==="Remoto"?' r':'')+'">'+esc(v.mod)+'</span></td>'+
+    '<td>'+esc(v.cidade)+'</td>'+
+    '<td>'+(v.bolsa?esc(v.bolsa):'A combinar')+'</td>'+
+    '<td>'+ago(v.data)+'</td>'+
+    '<td><div class="act">'+(h?'<a class="apply" href="'+esc(h)+'" target="_blank" rel="noopener noreferrer">Candidatar-se</a>':'<span>'+esc(v.contato)+'</span>')+
+    '<button class="del" data-id="'+v.id+'" type="button">Remover</button></div></td></tr>';
+  }).join(""):'<tr><td colspan="7" class="empty">Nenhuma vaga encontrada. Ajuste a busca ou publique a primeira vaga acima.</td></tr>';
+}
+$("f").addEventListener("submit",function(e){
+  e.preventDefault();
+  var msg=$("msg"),f=e.target;
+  var req=["empresa","cargo","area","cidade","contato"];
+  for(var i=0;i<req.length;i++){if(!$(req[i]).value.trim()){msg.style.color="var(--err)";msg.textContent="Preencha o campo obrigatório: "+$(req[i]).previousElementSibling.textContent+".";$(req[i]).focus();return}}
+  if(!link($("contato").value)){msg.style.color="var(--err)";msg.textContent="Informe um e-mail válido ou um link começando com https://.";$("contato").focus();return}
+  vagas.push({id:Date.now(),empresa:$("empresa").value.trim(),cargo:$("cargo").value.trim(),area:$("area").value.trim(),mod:$("mod").value,cidade:$("cidade").value.trim(),bolsa:$("bolsa").value.trim(),contato:$("contato").value.trim(),desc:$("desc").value.trim(),data:Date.now()});
+  save();f.reset();$("q").value="";$("fm").value="";render();
+  msg.style.color="var(--brand)";msg.textContent="Vaga publicada! Ela já está na tabela.";
+  $("vagas").scrollIntoView();
+});
+$("tb").addEventListener("click",function(e){
+  var b=e.target.closest(".del");if(!b)return;
+  if(!confirm("Remover esta vaga da lista?"))return;
+  vagas=vagas.filter(function(v){return String(v.id)!==b.getAttribute("data-id")});save();render();
+});
+$("q").addEventListener("input",render);$("fm").addEventListener("change",render);
+render();
+})();
+</script>
+</body>
+</html>
